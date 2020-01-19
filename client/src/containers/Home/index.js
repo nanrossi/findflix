@@ -1,6 +1,5 @@
 import React from 'react';
 import List from '../../components/List/index.js';
-import Flix from '../../components/Flix/index.js';
 import Header from '../../components/Header/index.js';
 import './index.css';
 
@@ -60,14 +59,10 @@ class Home extends React.Component {
     return (
       <div className="container">
           <Header />
-          <hr />
-          <section className="section">
-            <List items={this.state.list} delete={this.removeItem} />
-          </section>
-          <hr />
-          <section className="section">
-            <Flix add={this.addItem} />
-          </section>
+          <List 
+            items={this.state.list} 
+            delete={this.removeItem} 
+          />
       </div>
     )
   }
