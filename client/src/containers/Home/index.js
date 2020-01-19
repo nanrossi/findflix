@@ -1,6 +1,7 @@
 import React from 'react';
 import List from '../../components/List/index.js';
 import Header from '../../components/Header/index.js';
+import api from '../../utils/api';
 import './index.css';
 
 class Home extends React.Component {
@@ -8,50 +9,30 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: [
-        "Movie 1",
-        "Movie 2",
-        "Movie 3"
-      ]
+      list: []
     }
 
-    this.addItem = this.addItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
   }
 
-  addItem(e) {
-    e.preventDefault();
+  componentDidMount() {
+    this.refreshFlixList();
+  }
 
-    let list = this.state.list;
-    const newItem = document.getElementById("addInput");
-    const form = document.getElementById("addItemForm");
-
-    if (newItem.value !== "") {
-      list.push(newItem.value);
-      this.setState({
-        list: list
-      });
-
-      newItem.classList.remove("is-danger");
-      form.reset();
-    } else {
-
-      newItem.classList.add("is-danger");
-    }
+  refreshFlixList() {
+    this.flixList = api.get('flix')
+        .then(response => response.data)
+        .then(data => {
+            this.setState({ 
+                list: data
+            });
+        });
   }
 
   removeItem(item) {
-    const list = this.state.list.slice();
-    list.some((el, i) => {
-      if (el === item) {
-        list.splice(i, 1);
-        return true;
-      }
-      return false;
-    });
-
-    this.setState({
-      list: list
+    api.delete('flix/' + item._id)
+    .then(() => {
+      this.refreshFlixList();
     });
   }
 
