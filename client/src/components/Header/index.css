@@ -1,0 +1,13 @@
+header {
+    width: 100%;
+  }
+  
+  header div {
+    display: inline-block;
+    padding: 20px;
+    border-left: 1px solid #cecece;
+  }
+  
+  header .menu {
+    width: 80%;
+  }
