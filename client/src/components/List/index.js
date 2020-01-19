@@ -17,31 +17,31 @@ class List extends React.Component {
         });
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         this.setState({
             filtered: nextProps.items
         });
     }
     
     handleChange(e) {
-    let currentList = [];
-    let newList = [];
+        let currentList = [];
+        let newList = [];
 
-    if (e.target.value !== "") {
-      currentList = this.props.items;
-      newList = currentList.filter(item => {
-        const lc = item.toLowerCase();
-        const filter = e.target.value.toLowerCase();
-        return lc.includes(filter);
-      });
-    } else {
-      newList = this.props.items;
+        if (e.target.value !== "") {
+        currentList = this.props.items;
+        newList = currentList.filter(item => {
+            const lc = item.toLowerCase();
+            const filter = e.target.value.toLowerCase();
+            return lc.includes(filter);
+        });
+        } else {
+        newList = this.props.items;
+        }
+
+        this.setState({
+        filtered: newList
+        });
     }
-
-    this.setState({
-      filtered: newList
-    });
-  }
 
     render() {
         return (
