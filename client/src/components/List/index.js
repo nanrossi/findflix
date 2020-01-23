@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import './index.css';
 
 class List extends React.Component {
@@ -56,12 +57,14 @@ class List extends React.Component {
                 <ul>
                     {this.state.filtered.map(item => (
                         <li key={item._id} id={item._id}>
-                        {item.name} &nbsp; | &nbsp;
-                        {item.category} &nbsp; | &nbsp;
-                        <span
-                            className="delete"
-                            onClick={() => this.props.delete(item)}
-                        > Delete </span>
+                            <Link to={'/flix/' + item._id}>
+                                {item.name} &nbsp; | &nbsp;
+                                {item.category} &nbsp; | &nbsp;
+                            </Link>
+                            <span
+                                className="delete"
+                                onClick={() => this.props.delete(item)}
+                            > Delete </span>
                         </li>
                     ))}
                 </ul>
