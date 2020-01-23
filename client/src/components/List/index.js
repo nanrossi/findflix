@@ -2,6 +2,17 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import './index.css';
 
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+import Paper from '@material-ui/core/Paper';
+import InputBase from '@material-ui/core/InputBase';
+import IconButton from '@material-ui/core/IconButton';
+import SearchIcon from '@material-ui/icons/Search';
+
 class List extends React.Component {
     constructor(props) {
         super(props);
@@ -48,26 +59,43 @@ class List extends React.Component {
     render() {
         return (
             <div>
-                <input 
-                    type="search" 
-                    className="input" 
-                    onChange={this.handleChange} 
-                    placeholder="Search By Name..." 
-                />
-                <ul>
+                <Paper component="form" className="search" >
+                    <InputBase
+                        type="search"
+                        className="search-input"
+                        placeholder="Search By Name..."
+                        inputProps={{ 'aria-label': 'search google maps' }}
+                        onChange={this.handleChange} 
+                    />
+                    <IconButton 
+                         className="search-button"
+                         type="submit" 
+                         aria-label="search">
+                        <SearchIcon />
+                    </IconButton>
+                </Paper>
+                <div>
                     {this.state.filtered.map(item => (
-                        <li key={item._id} id={item._id}>
-                            <Link to={'/flix/' + item._id}>
-                                {item.name} &nbsp; | &nbsp;
-                                {item.category} &nbsp; | &nbsp;
-                            </Link>
-                            <span
-                                className="delete"
-                                onClick={() => this.props.delete(item)}
-                            > Delete </span>
-                        </li>
+                            <Card key={item._id} id={item._id} variant="outlined" className="card">
+                                <Link to={'/flix/' + item._id}>
+                                    <CardContent>
+                                        <Typography className="title" color="textSecondary" gutterBottom>
+                                            {item.name}
+                                        </Typography>
+                                            {item.category}
+                                    </CardContent> 
+                                </Link>
+                                <CardActions>
+                                    <Button
+                                        className="delete"
+                                        onClick={() => this.props.delete(item)}
+                                    > 
+                                        Delete 
+                                    </Button>
+                                </CardActions>
+                            </Card>
                     ))}
-                </ul>
+                </div>
             </div>
         )
     }
