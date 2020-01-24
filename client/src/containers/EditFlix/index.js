@@ -10,9 +10,12 @@ class EditFlix extends React.Component {
     super(props);
 
     this.state = {
-      _id: 0,
-      name: '',
-      category: ''
+      flix: {
+        _id: 0,
+        name: '',
+        category: 'Movie'
+      },
+      toast: false
     }
 
     this.submit = this.submit.bind(this);
@@ -25,7 +28,9 @@ class EditFlix extends React.Component {
       api.get('flix/' + id)
       .then(response => response.data)
       .then(data => {
-          this.setState(data);
+          this.setState({
+            flix: data
+          });
       });
     }
   }
@@ -43,7 +48,10 @@ class EditFlix extends React.Component {
             })
           );
 
-          this.props.history.push('/flix');
+          this.setState({
+            flix: flix,
+            toast: true
+          });
         }
     }
   }
@@ -54,8 +62,10 @@ class EditFlix extends React.Component {
             <Header />
             <Flix 
               createOrUpdate={this.createOrUpdate}
-              data={this.state}
+              data={this.state.flix}
+              toast={this.state.toast}
               submit={this.submit}
+              message="Flix updated!"
             />
       </div>
     )

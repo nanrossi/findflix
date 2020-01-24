@@ -4,6 +4,9 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 import './index.css';
 
@@ -28,7 +31,7 @@ class Flix extends React.Component {
     }
     handleChange(e){
         this.setState({
-            [e.target.id]: e.target.value,
+            [e.target.name]: e.target.value,
         });
     }
 
@@ -44,7 +47,8 @@ class Flix extends React.Component {
                     <div>
                         <TextField 
                             required 
-                            id="name" 
+                            id="name"
+                            name="name" 
                             label="Flix Name" 
                             className="input"
                             placeholder="Flix Name..."
@@ -55,6 +59,7 @@ class Flix extends React.Component {
                     <div>
                         <TextField
                             id="category"
+                            name="category"
                             select
                             label="Category"
                             value={this.state.category || 'Movie'}
@@ -75,10 +80,30 @@ class Flix extends React.Component {
                             variant="contained"
                             className="button"
                         >
-                            { this.state._id === 0 ? 'Add Flix' : 'Edit Flix' }
+                            { 
+                                this.state._id === 0 ? 
+                                'Add Flix' : 
+                                'Edit Flix' 
+                            }
                         </Button>
                     </div>
                 </form>
+
+                <Snackbar 
+                    open={this.props.toast}
+                    autoHideDuration={6000} 
+                    onClose={this.props.handleClose}  
+                    message={this.props.message}
+                    action={
+                        <IconButton
+                            aria-label="close"
+                            color="inherit"
+                            onClick={this.props.handleClose}
+                        >
+                            <CloseIcon />
+                        </IconButton>
+                    }
+                />
             </Card>
         )
     }

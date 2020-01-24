@@ -53,7 +53,11 @@ class List extends React.Component {
                 <SearchInput handleChange={this.handleChange}/>
                 <div>
                     {this.state.filtered.map(item => (
-                        <FlixCard key={item._id} item={item} delete={this.props.delete} />
+                        <FlixCard 
+                            key={item._id} 
+                            item={item}
+                            delete={this.props.delete} 
+                        />
                     ))}
                 </div>
             </div>

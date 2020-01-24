@@ -10,16 +10,30 @@ class AddFlix extends React.Component {
     super(props);
 
     this.state = {
-      _id: 0,
-      name: '',
-      category: 'Movie'
+      flix: {
+        _id: 0,
+        name: '',
+        category: 'Movie'
+      },
+      toast: false
     }
 
     this.submit = this.submit.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
+  handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    this.setState({
+        toast: false
+    });
+};
+
   submit(e, flix) {
-    const {name, category } = flix;
+    const {name, category} = flix;
 
     if (name !== '' && category !== '') {          
       api.post('flix', 
@@ -29,7 +43,12 @@ class AddFlix extends React.Component {
         })
       );
       
-      this.props.history.push('/flix');
+      this.setState({
+        flix: flix,
+        toast: true
+      }, () => {
+        document.getElementById('flixForm').reset();
+      });
     }
   }
 
@@ -39,8 +58,11 @@ class AddFlix extends React.Component {
             <Header />
             <Flix 
               createOrUpdate={this.createOrUpdate}
-              data={this.state}
+              handleClose={this.handleClose}
+              data={this.state.flix}
+              toast={this.state.toast}
               submit={this.submit}
+              message="Flix created!"
             />
       </div>
     )

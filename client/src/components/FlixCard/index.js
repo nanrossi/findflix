@@ -11,9 +11,14 @@ import Typography from '@material-ui/core/Typography';
 class FlixCard extends React.Component {
     render() {
       const { item } = this.props;
-      
+
       return(
-        <Card key={item._id} id={item._id} variant="outlined" className="card">
+        <Card 
+            key={item._id} 
+            id={item._id}
+            variant="outlined"
+            className="card"
+        >
             <Link to={'/flix/' + item._id}>
                 <CardContent>
                     <Typography color="textPrimary">
