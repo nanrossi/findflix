@@ -11,14 +11,14 @@
 
 .search-input {
     width: 90%;
-    margin: 0 20px;
+    margin: 0 2%;
 }
 
-.search-button {
+#search-button {
+    padding: 0;
     width: 5%;
-    margin: 0 20px;
 }
 
 .title {
-    font-size: 14;
+    font-size: 20;
 }

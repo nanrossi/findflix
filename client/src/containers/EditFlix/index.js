@@ -42,7 +42,7 @@ class EditFlix extends React.Component {
               category: category
             })
           );
-        } 
+        }
     }
   }
 

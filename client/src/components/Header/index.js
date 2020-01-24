@@ -20,7 +20,10 @@ class Header extends React.Component {
             <header>
 				{this.state.menuItens.map(item => {
 						return (
-								<div key={item.name} >
+                                <div 
+                                    key={item.name} 
+                                    className='menu-item'
+                                >
 									<Link 
 										to={item.url}>
 										{item.name}
@@ -30,7 +33,7 @@ class Header extends React.Component {
 						}
 					)
 				}
-          </header>
+            </header>
         )
     }
 }

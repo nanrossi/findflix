@@ -68,7 +68,7 @@ class List extends React.Component {
                         onChange={this.handleChange} 
                     />
                     <IconButton 
-                         className="search-button"
+                         id="search-button"
                          type="submit" 
                          aria-label="search">
                         <SearchIcon />
@@ -79,10 +79,12 @@ class List extends React.Component {
                             <Card key={item._id} id={item._id} variant="outlined" className="card">
                                 <Link to={'/flix/' + item._id}>
                                     <CardContent>
-                                        <Typography className="title" color="textSecondary" gutterBottom>
+                                        <Typography color="textPrimary">
                                             {item.name}
                                         </Typography>
+                                        <Typography color="textSecondary">
                                             {item.category}
+                                        </Typography>
                                     </CardContent> 
                                 </Link>
                                 <CardActions>

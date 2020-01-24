@@ -7,5 +7,24 @@ header {
 header div {
   display: inline-block;
   padding: 20px;
-  border-left: 1px solid #cecece;
+  border: 20 solid #cecece;
+}
+
+.menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.menu-item:hover a {
+  color: ghostwhite;
+}
+
+@media (max-width: 600px) {
+  header div {
+    border: 1px solid #cecece;
+  }
+
+  .menu-item {
+    width: 100%;
+    text-align: center;
+  }
 }
