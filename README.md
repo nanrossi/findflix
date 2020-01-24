@@ -1,4 +1,4 @@
-# findflix
+# FINDFLIX
 
 - [x] Faixa 1
 - [ ] Faixa 2
