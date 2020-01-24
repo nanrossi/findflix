@@ -26,6 +26,6 @@ $ yarn start  // run it locally
 ### Prepare your secret
 ```terminal
 $ cd server   // go to server folder
-$ yarn       // npm install pacakges
+$ yarn       // yarn install packages
 $ node index.js // run it locally
 ```
