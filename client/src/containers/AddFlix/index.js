@@ -12,7 +12,7 @@ class AddFlix extends React.Component {
     this.state = {
       _id: 0,
       name: '',
-      category: ''
+      category: 'Movie'
     }
 
     this.submit = this.submit.bind(this);
@@ -29,7 +29,7 @@ class AddFlix extends React.Component {
         })
       );
       
-      document.getElementById('flixForm').reset();
+      this.props.history.push('/flix');
     }
   }
 

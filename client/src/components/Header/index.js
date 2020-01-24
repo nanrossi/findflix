@@ -7,10 +7,8 @@ class Header extends React.Component {
         super(props);
         this.state = {
             menuItens: [
-                { name: "FindFlix",  url:"/"},
                 { name: "Consultar Flix",  url:"/flix"},
-                { name: "Adicionar Flix",  url:"/flix/create"},
-                { name: "Logout",  url:"/logout"},
+                { name: "Adicionar Flix",  url:"/flix/create"}
             ]
         }
     }
@@ -18,17 +16,19 @@ class Header extends React.Component {
     render() {
         return(
             <header>
+                <div>
+                    FindFlix
+                </div>
 				{this.state.menuItens.map(item => {
 						return (
-                                <div 
-                                    key={item.name} 
-                                    className='menu-item'
-                                >
-									<Link 
-										to={item.url}>
-										{item.name}
-									</Link>
+                            <Link 
+                                key={item.name} 
+                                to={item.url}
+                            >
+                                <div className='menu-item'>
+									{item.name}
 								</div>
+							</Link>
 							)
 						}
 					)

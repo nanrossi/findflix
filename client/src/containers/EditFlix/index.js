@@ -42,6 +42,8 @@ class EditFlix extends React.Component {
               category: category
             })
           );
+
+          this.props.history.push('/flix');
         }
     }
   }

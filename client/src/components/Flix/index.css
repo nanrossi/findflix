@@ -1,0 +1,15 @@
+.form-card {
+    width: 80%;
+    min-height: 200px;
+    margin: 5px 10%;
+}
+
+.button {
+    color: #fff;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.form > div {
+    width: 100%;
+    margin: 20px;
+}

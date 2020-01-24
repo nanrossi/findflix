@@ -1,4 +1,10 @@
 import React from 'react';
+
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
+
 import './index.css';
 
 class Flix extends React.Component {
@@ -8,7 +14,6 @@ class Flix extends React.Component {
         this.validCategories = ['Movie', 'Series', 'Other'];
 
         this.state = props.data;
-
 
         this.handleChange = this.handleChange.bind(this);
         this.submit = this.submit.bind(this);
@@ -34,35 +39,47 @@ class Flix extends React.Component {
 
     render() {
         return(
-            <form className="form" id="flixForm">
-                <input
-                    type="text"
-                    className="input"
-                    id="name"
-                    placeholder="Flix Name..."
-                    onChange={this.handleChange}
-                    value={this.state.name || ''}
-                />
-                <select 
-                    id="category"
-                    value={this.state.category || 'Movie'}
-                    onChange={this.handleChange}
-                >
-                    {this.validCategories.map((category) => 
-                        <option
-                            key={category} 
-                            value={category} 
+            <Card className="form-card">
+                <form className="form" id="flixForm">
+                    <div>
+                        <TextField 
+                            required 
+                            id="name" 
+                            label="Flix Name" 
+                            className="input"
+                            placeholder="Flix Name..."
+                            onChange={this.handleChange}
+                            value={this.state.name || '' }
+                        />
+                    </div>
+                    <div>
+                        <TextField
+                            id="category"
+                            select
+                            label="Category"
+                            value={this.state.category || 'Movie'}
+                            onChange={this.handleChange}
                         >
-                            {category}
-                        </option>  
-                    )}
-                </select>
-                <button 
-                    onClick={this.submit}
-                >
-                    { this.state._id === 0 ? 'Add Flix' : 'Edit Flix' } 
-                </button>
-          </form>
+                            {this.validCategories.map(category => (
+                                <MenuItem 
+                                    key={category} 
+                                    value={category}>
+                                        {category}
+                                </MenuItem>
+                            ))}
+                        </TextField>
+                    </div>
+                    <div>
+                        <Button 
+                            onClick={this.submit}
+                            variant="contained"
+                            className="button"
+                        >
+                            { this.state._id === 0 ? 'Add Flix' : 'Edit Flix' }
+                        </Button>
+                    </div>
+                </form>
+            </Card>
         )
     }
 }

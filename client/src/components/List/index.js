@@ -1,17 +1,8 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import SearchInput from '../SearchInput';
+import FlixCard from '../FlixCard';
 import './index.css';
 
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-
-import Paper from '@material-ui/core/Paper';
-import InputBase from '@material-ui/core/InputBase';
-import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
 
 class List extends React.Component {
     constructor(props) {
@@ -59,43 +50,10 @@ class List extends React.Component {
     render() {
         return (
             <div>
-                <Paper component="form" className="search" >
-                    <InputBase
-                        type="search"
-                        className="search-input"
-                        placeholder="Search By Name..."
-                        inputProps={{ 'aria-label': 'search google maps' }}
-                        onChange={this.handleChange} 
-                    />
-                    <IconButton 
-                         id="search-button"
-                         type="submit" 
-                         aria-label="search">
-                        <SearchIcon />
-                    </IconButton>
-                </Paper>
+                <SearchInput handleChange={this.handleChange}/>
                 <div>
                     {this.state.filtered.map(item => (
-                            <Card key={item._id} id={item._id} variant="outlined" className="card">
-                                <Link to={'/flix/' + item._id}>
-                                    <CardContent>
-                                        <Typography color="textPrimary">
-                                            {item.name}
-                                        </Typography>
-                                        <Typography color="textSecondary">
-                                            {item.category}
-                                        </Typography>
-                                    </CardContent> 
-                                </Link>
-                                <CardActions>
-                                    <Button
-                                        className="delete"
-                                        onClick={() => this.props.delete(item)}
-                                    > 
-                                        Delete 
-                                    </Button>
-                                </CardActions>
-                            </Card>
+                        <FlixCard key={item._id} item={item} delete={this.props.delete} />
                     ))}
                 </div>
             </div>
