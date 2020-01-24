@@ -22,8 +22,6 @@ $ yarn start  // run it locally
 ```
 
 ## Server-side usage(PORT: 3333)
-
-### Prepare your secret
 ```terminal
 $ cd server   // go to server folder
 $ yarn       // yarn install packages
