@@ -5,9 +5,10 @@ import {
   Route
 } from "react-router-dom";
 
-import Home from '../../containers/Home/index.js';
-import AddFlix from '../../containers/AddFlix/index.js';
-import EditFlix from '../../containers/EditFlix/index.js';
+import Home from '../../containers/Home';
+import AddFlix from '../../containers/AddFlix';
+import EditFlix from '../../containers/EditFlix';
+import NotFound from "../../containers/NotFound";
 
 export default function RouterSwitch() {
   return (
@@ -17,6 +18,7 @@ export default function RouterSwitch() {
         <Route path='/flix/:id' component={EditFlix} />
         <Route path='/flix' component={Home} />
         <Route exact path='/' component={Home} />
+        <Route component={NotFound} />
       </Switch>
     </Router>
   );
