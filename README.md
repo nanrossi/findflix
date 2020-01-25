@@ -9,7 +9,7 @@ Demo: http://ec2-3-133-84-37.us-east-2.compute.amazonaws.com/
 - [x] Faixa 1
 - [ ] Faixa 2
 - [ ] Faixa 3
-- [ ] Faixa 4
+- [x] Faixa 4
 
 ## Prerequirements
 - MongoDB
